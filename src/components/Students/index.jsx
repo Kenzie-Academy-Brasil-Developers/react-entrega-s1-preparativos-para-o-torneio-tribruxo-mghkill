@@ -1,9 +1,9 @@
 import "./styles.css";
-const Students = ({ setIsLogged, studentes }) => {
+const Students = ({ handleClick, students }) => {
   return (
     <article>
       <div className="conteiner__students">
-        {studentes.map((stud) => (
+        {students.map((stud) => (
           <div key={stud.name} className="box">
             <div className={stud.house + " " + "box__students"}>
               <img src={stud.image} alt="Students" />
@@ -12,11 +12,12 @@ const Students = ({ setIsLogged, studentes }) => {
             <div className="title">
               <span className="title_students">{stud.name}</span>
               <span className="title_students">{stud.species}</span>
+              <span className="title_students">{stud.house}</span>
             </div>
           </div>
         ))}
       </div>
-      <button className="students__button" onClick={() => setIsLogged(false)}>
+      <button className="students__button" onClick={handleClick}>
         Tentar novamente!
       </button>
     </article>

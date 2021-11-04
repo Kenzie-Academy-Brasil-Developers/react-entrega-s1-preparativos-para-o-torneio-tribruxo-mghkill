@@ -5,13 +5,14 @@ import Students from "./components/Students";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
-  const [studentes, setStudentes] = useState([]);
+  const [students, setStudents] = useState([]);
   const [gryffindor, setGryffindor] = useState([]);
   const [slytherin, setSlytherin] = useState([]);
   const [hufflepuff, setHufflepuff] = useState([]);
   const [ravenclaw, setRavenclaw] = useState([]);
-  const aleatorio = (multiplicador) =>
-    Math.floor(Math.random() * multiplicador);
+
+  const random = (multiplicador) => Math.floor(Math.random() * multiplicador);
+  const random2 = Math.floor(Math.random() * 4);
 
   useEffect(() => {
     fetch("https://hp-api.herokuapp.com/api/characters/students")
@@ -41,13 +42,13 @@ function App() {
   }, []);
 
   const handleClick = () => {
-    setStudentes(
+    setStudents(
       [
-        gryffindor[aleatorio(gryffindor.length)],
-        slytherin[aleatorio(slytherin.length)],
-        hufflepuff[aleatorio(hufflepuff.length)],
-        ravenclaw[aleatorio(ravenclaw.length)],
-      ].splice(1)
+        gryffindor[random(gryffindor.length)],
+        slytherin[random(slytherin.length)],
+        hufflepuff[random(hufflepuff.length)],
+        ravenclaw[random(ravenclaw.length)],
+      ].filter((e, i) => i !== random2)
     );
   };
   return (
@@ -56,9 +57,7 @@ function App() {
         {!isLogged && (
           <HomePage setIsLogged={setIsLogged} handleClick={handleClick} />
         )}
-        {isLogged && (
-          <Students setIsLogged={setIsLogged} studentes={studentes} />
-        )}
+        {isLogged && <Students handleClick={handleClick} students={students} />}
       </main>
     </div>
   );
