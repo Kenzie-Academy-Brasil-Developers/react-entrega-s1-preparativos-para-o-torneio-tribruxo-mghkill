@@ -50,7 +50,6 @@ function App() {
       ].splice(1)
     );
   };
-  console.log(studentes);
   return (
     <div className="App">
       <main className="App-main">
