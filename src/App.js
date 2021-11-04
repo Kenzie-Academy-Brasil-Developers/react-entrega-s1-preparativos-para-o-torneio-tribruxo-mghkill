@@ -14,7 +14,7 @@ function App() {
     Math.floor(Math.random() * multiplicador);
 
   useEffect(() => {
-    fetch("http://hp-api.herokuapp.com/api/characters/students")
+    fetch("https://hp-api.herokuapp.com/api/characters/students")
       .then((response) => response.json())
       .then((response) => {
         setGryffindor(
