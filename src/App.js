@@ -10,7 +10,6 @@ function App() {
   const [slytherin, setSlytherin] = useState([]);
   const [hufflepuff, setHufflepuff] = useState([]);
   const [ravenclaw, setRavenclaw] = useState([]);
-  const [homeless, setHomeless] = useState([]);
   const aleatorio = (multiplicador) =>
     Math.floor(Math.random() * multiplicador);
 
@@ -38,9 +37,6 @@ function App() {
             (item) => item.house === "Ravenclaw" && item.image !== ""
           )
         );
-        setHomeless(
-          response.filter((item) => item.house === "" && item.image !== "")
-        );
       });
   }, []);
 
@@ -51,7 +47,6 @@ function App() {
         slytherin[aleatorio(slytherin.length)],
         hufflepuff[aleatorio(hufflepuff.length)],
         ravenclaw[aleatorio(ravenclaw.length)],
-        homeless[aleatorio(homeless.length)],
       ].splice(1)
     );
   };

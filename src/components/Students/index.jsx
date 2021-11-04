@@ -4,19 +4,14 @@ const Students = ({ setIsLogged, studentes }) => {
     <article>
       <div className="conteiner__students">
         {studentes.map((stud) => (
-          <div key={stud.name}>
-            <div
-              className={
-                stud.house
-                  ? stud.house + " " + "box__students"
-                  : "Gryffindor" + "box__students"
-              }
-            >
+          <div key={stud.name} className="box">
+            <div className={stud.house + " " + "box__students"}>
               <img src={stud.image} alt="Students" />
             </div>
+
             <div className="title">
-              <span className="title_students">Name: {stud.name}</span>
-              <span className="title_students">Species: {stud.species}</span>
+              <span className="title_students">{stud.name}</span>
+              <span className="title_students">{stud.species}</span>
             </div>
           </div>
         ))}
